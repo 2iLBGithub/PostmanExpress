@@ -30,7 +30,7 @@ POST ONE
 Example Body:
 
 {
-  "name": "mocha"
+  "name": "mocha",
   "rating": 6
 }
 
@@ -47,7 +47,7 @@ PUT ONE
 Example Body:
 
 {
-  "name": "nice coffee"
+  "name": "nice coffee",
   "rating": 6
 }
 
