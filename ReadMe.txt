@@ -11,3 +11,53 @@ Steps
 - node server.js
 - import postman file to Postman
 - Run the requests
+
+Requests
+
+GET ALL
+{yourPort}/beverages / http://localhost:3000/beverages
+
+---
+
+GET ONE
+{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+
+---
+
+POST ONE
+{yourPort}/beverages / http://localhost:3000/beverages
+
+Example Body:
+
+{
+  "name": "mocha"
+  "rating": 6
+}
+
+---
+
+DELETE ONE
+{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+
+---
+
+PUT ONE
+{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+
+Example Body:
+
+{
+  "name": "nice coffee"
+  "rating": 6
+}
+
+---
+
+PATCH ONE
+{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+
+Example Body:
+
+{
+  "name": "bad coffee"
+}
