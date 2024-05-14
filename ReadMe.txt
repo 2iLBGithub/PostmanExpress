@@ -26,13 +26,16 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 
-pm.test("Response must be an array", function () {
-    pm.expect(pm.response.json()).to.be.an('array');
+pm.test("'beverages' key contains an array", function () {
+    var responseData = pm.response.json();
+    pm.expect(responseData.beverages).to.be.an('array');
 });
 
 pm.test("Array is not empty", function () {
-    pm.expect(pm.response.json().length).to.be.above(0);
+    var responseData = pm.response.json();
+    pm.expect(responseData.beverages.length).to.be.above(0);
 });
+
 
 ---
 
