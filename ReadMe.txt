@@ -1,24 +1,28 @@
 Purpose
 To demonstrate REST functionality on a working server via Postman whilst using some of the tools postman provides, namely collection variables and tests.
 
+Summary
+This repository focuses mainly on providing an express server with logic for REST operations. It also has a data.json file where an object, beverages, with a list of said beverages, is stored. We can therefore use Postman to interact with this server and its supporting data.json, and when we make these requests we can also run tests.
+
 Pre-Req
 - Have node installed
 - Have Postman installed
 
 Steps
 - Clone Repo
-- npm install 
+- npm install shouldn't be necessary as the modules are already in the repository, but if problems abound the first step would be to delete the modules, package-lock.json and install
 - node server.js
-- import postman file to Postman
+- Import postman file to Postman
 - Run the requests
 
 Requests
+The requests are split into two sections each, namely the request and the tests which accompany it. Note that each request and test interacts with the data.json file in the express server, and as such some requests and tests may fail if requests overlap, ie if one was to delete with id = 1 and was then to attempt a put/patch on the same item. 
 
 ---
 
 GET ALL
 
-{yourPort}/beverages / http://localhost:3000/beverages
+{yourPort}/beverages OR http://localhost:3000/beverages
 
 TEST
 
@@ -36,12 +40,11 @@ pm.test("Array is not empty", function () {
     pm.expect(responseData.beverages.length).to.be.above(0);
 });
 
-
 ---
 
 GET ONE
 
-{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+{yourPort}/beverages/{yourNumber} OR http://localhost:3000/beverages/1
 
 TEST
 
@@ -57,7 +60,7 @@ pm.test("Response has name '{YOUR TERM}'", function () {
 
 POST ONE
 
-{yourPort}/beverages / http://localhost:3000/beverages
+{yourPort}/beverages OR http://localhost:3000/beverages
 
 Example Body:
 
@@ -78,24 +81,11 @@ pm.test("Response has correct name and rating", function () {
     pm.expect(resp.rating).to.equal(6);
 });
 
-
----
-
-DELETE ONE
-
-{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
-
-TEST
-
-pm.test("Status code is 204", function () {
-    pm.response.to.have.status(204);
-});
-
 ---
 
 PUT ONE
 
-{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+{yourPort}/beverages/{yourNumber} OR http://localhost:3000/beverages/1
 
 Example Body:
 
@@ -120,7 +110,7 @@ pm.test("Response has updated values", function () {
 
 PATCH ONE
 
-{yourPort}/beverages/{yourNumber} / http://localhost:3000/beverages/1
+{yourPort}/beverages/{yourNumber} OR http://localhost:3000/beverages/1
 
 Example Body:
 
@@ -138,3 +128,16 @@ pm.test("Name has been updated to 'bad coffee'", function () {
     pm.expect(pm.response.json().name).to.eql("bad coffee");
 });
 
+---
+
+DELETE ONE
+
+{yourPort}/beverages/{yourNumber} OR http://localhost:3000/beverages/1
+
+TEST
+
+pm.test("Status code is 204", function () {
+    pm.response.to.have.status(204);
+});
+
+---
